@@ -9,7 +9,11 @@ public class SwitchTaskSolder {
 
         // checkPrice();
 
-        transformMark();
+        //transformMark();
+
+        // commandReader();
+
+        calculator();
 
     }
 
@@ -93,10 +97,67 @@ public class SwitchTaskSolder {
     }
 
 
-    public static void commandReader () {
+    public static String commandReader () {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите команду: ");
+        String runCommand = scanner.nextLine();
+        String command;
+
+        switch (runCommand) {
+            case "start":
+                command = "Система запущена";
+                break;
+            case "stop":
+                command = "Система остановлена";
+                break;
+            case "restart":
+                command = "Система перезапущена";
+                break;
+            case "status":
+                command = "Система работает";
+                break;
+            default:
+                command = "Команда не распознана";
+        }
+        System.out.println(command);
+        return command;
+
 
     }
 
+    public static void calculator () {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число a: ");
+        String a = scanner.nextLine();
+        System.out.println("Введите число b: ");
+        String b = scanner.nextLine();
+        System.out.println("Введите оператор для чисел a и b: ");
+        String operator = scanner.nextLine();
+
+
+        int result = 0;
+
+        if (!b.equals("0")) {
+
+            switch (operator) {
+                case "*":
+                    result = Integer.parseInt(a) * Integer.parseInt(b);
+                    break;
+                case "/":
+                    result = Integer.parseInt(a) / Integer.parseInt(b);
+                    break;
+                case "+":
+                    result = Integer.parseInt(a) + Integer.parseInt(b);
+                    break;
+                case "-":
+                    result = Integer.parseInt(a) - Integer.parseInt(b);
+                    break;
+            }
+            System.out.println("Результат вычисления равен: " + result);
+
+        } else {
+           System.out.println("Деление на ноль недопустимо");
+        }
+
+    }
 }
